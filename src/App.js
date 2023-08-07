@@ -1,63 +1,60 @@
-import React from 'react';
-import './App.css';
-import { LoginPage } from './login';
-import { RegistrationForm } from './registration';
-import {BenificiesDetails} from './user';
-import { NavLink, Routes, Route } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import "./App.css";
+import UserProfilePage from "./admin/UserProfilePage";
+import LoginPage from "./login/login";
+import RegistrationForm from "./registration/registration";
+import Home from "./home/home";
+import Header from "./static/header";
+import Footer from "./static/footer";
+import PrivateRoutes from "./PrivateRoutes";
+import PrivateRouteUser from "./PrivateRouteUser";
+import Accounts from "./admin/Accounts";
+import { Provider } from "react-redux";
+import store from "./store";
+import TransactionPage from "./transaction/transaction";
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Function to handle successful login and set isLoggedIn to true
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
-    <div className="App">
-      <div>
-        <header>
-          <img
-            src="https://www.vhv.rs/dpng/d/427-4273719_random-logo-transparent-background-hd-png-download.png"
-            height="60px"
+    <Provider store={store}>
+      <Router>
+        <div className="container">
+          <Header
+            className="header"
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
           />
-          <h1>Omega Banking</h1>
-          <nav>
-            <ul>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/accounts">Account</a>
-              </li>
-              <li>
-                <NavLink to="/benificies"><a>Benificies</a></NavLink>
-              </li>
-              <li>
-                <a href="/profile">Profile</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        {/* <Navbar /> */}
-        <main>
-          <h2>Secure and Convenient Online Banking</h2>
-          <p>
-            Manage your accounts and perform transactions from the comfort of
-            your home.
-          </p>
-          <NavLink to="/login"><button>Login</button></NavLink>
-          <NavLink to="/registrationform"><button>Register</button></NavLink>
-          <div className='formspace'>
-          <Routes>
-        <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/registrationform' element={<RegistrationForm/>}/>
-        <Route path='/benificies' element={<BenificiesDetails/>}/>
-        </Routes>
+
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/signup" element={<RegistrationForm />} />
+              <Route
+                path="/signin"
+                element={<LoginPage onLoginSuccess={handleLoginSuccess} />}
+              />
+
+              <Route path="/transactions" element={<TransactionPage />} />
+
+              <Route element={<PrivateRoutes />}>
+                <Route path="/accounts" element={<Accounts />} />
+              </Route>
+
+              <Route element={<PrivateRouteUser isLoggedIn={isLoggedIn} />}>
+                <Route path="/profile" element={<UserProfilePage />} />
+              </Route>
+            </Routes>
           </div>
-        </main>
-        {/* <Customerdetails/> */}
-        <footer>
-          <p>
-            &copy; {new Date().getFullYear()} Omega Banking. All rights
-            reserved.
-          </p>
-        </footer>
-      </div>
-    </div>
+          <Footer className="footer" />
+        </div>
+      </Router>
+    </Provider>
   );
 }
 

@@ -1,0 +1,112 @@
+header {
+  background-color: #071952;
+  color: #fff;
+  padding: 10px;
+  height: fit-content;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.logo img {
+  margin-right: 10px;
+}
+
+.logo h1 {
+  margin: 0;
+}
+
+img {
+  display: inline;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Styles for the button */
+.btn-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-bottom: -5px;
+  width: fit-content;
+  float: right;
+  margin-top: -51px;
+  margin-right: -17px;
+}
+
+.btn {
+  background-color: rgb(52, 98, 133);
+  color: black;
+  height: 82px;
+  width: 82px;
+ 
+  cursor: pointer;
+
+}
+.btn a {
+
+  text-decoration: none;
+}
+
+/* Styles for the dropdown */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  display: none;
+}
+
+.btn-container:hover .dropdown {
+  display: block;
+}
+
+/* Styles for the dropdown items */
+.dropdown-item {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dropdown-item:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.dropdown-item:hover {
+  background-color: #0056b3;
+}
+

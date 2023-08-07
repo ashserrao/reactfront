@@ -2,15 +2,15 @@
 
 .form-container {
     width: 400px;
-    margin: 0 auto;
+    margin: 0;
     background-color: #97FEED;
     color: #0B666A;
     border-radius: 10px;
   }
   
-  .form-group {
+  /* .form-group {
     margin-bottom: 20px;
-  }
+  } */
   
   .form-group label {
     padding-left: 10px;
@@ -34,7 +34,7 @@
   }
   
   .form-group button {
-    margin: 2px 20px;
+    margin: 10px 10px;
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -46,4 +46,78 @@
   .form-group button:hover {
     background-color: #0056b3;
   }
+ 
+  .form-select{
+    margin-left: 10px;
+    width: 250px;
+    font-size: medium;
+    
+  }
+  .form-select:focus {
+    outline: none;
+    border-color: #4c9aff;
+    box-shadow: 0 0 0 2px #067bae97;
+  }
   
+  .form-select option {
+  
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .success-message {
+    background-color: #c4e8b7;
+    border: 1px solid #7ed957;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .success-message p {
+    margin: 0;
+    color: #267f18;
+    font-size: 16px;
+  }
+  
+  /* registration.css */
+
+/* ... (rest of your existing styles) ... */
+
+.alert-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.alert {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.alert p {
+  margin-bottom: 10px;
+}
+
+.alert button {
+  padding: 8px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.alert button:hover {
+  background-color: #0056b3;
+}

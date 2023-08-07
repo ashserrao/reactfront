@@ -1,33 +1,34 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { useNavigate } from 'react-router-dom';
+import './home.css';
 
-class HomePage extends React.Component {
-  render() {
-    return (
+
+const Home = () => {
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    navigate('/signin'); // Replace '/signin' with the correct path to your sign-in page
+  };
+
+  const handleSignUp = () => {
+    navigate('/signup'); // Replace '/signup' with the correct path to your sign-up page
+  };
+
+  return (
+    
+    <main >
+      
       <div>
-        <header>
-          <h1>Welcome to My Bank</h1>
-          <nav>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/accounts">Accounts</a></li>
-              <li><a href="/transactions">Transactions</a></li>
-              <li><a href="/contact">Contact</a></li>
-            </ul>
-          </nav>
-        </header>
-        <main>
-          <h2>Secure and Convenient Online Banking</h2>
-          <p>Manage your accounts and perform transactions from the comfort of your home.</p>
-          <button>Sign In</button>
-          <button>Sign Up</button>
-        </main>
-        <footer>
-          <p>&copy; {new Date().getFullYear()} My Bank. All rights reserved.</p>
-        </footer>
+      
+      <h2>Secure and Convenient Online Banking</h2>
+      <p>Manage your accounts and perform transactions from the comfort of your home.</p>
+      <button onClick={handleSignIn}>Sign In</button>
+      <button onClick={handleSignUp}>Sign Up</button>
       </div>
-    );
-  }
-}
 
-ReactDOM.render(<HomePage />, document.getElementById('root'));
+    </main>
+    
+  );
+};
+
+export default Home;
