@@ -310,7 +310,7 @@ const RegistrationForm = () => {
         residential_add: '',
         sameAsPermanent: false,
       });
-      window.alert(response.data);
+      window.alert("HEY! "+response.data.first_name+" "+response.data.last_name+" welcome to Omega Family");
 
       // Redirect the user to the login page
       navigate('/signin');
