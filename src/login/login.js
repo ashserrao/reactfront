@@ -58,18 +58,24 @@ const LoginPage = ({ onLoginSuccess }) => {
       const fileName = userData?.masteruser?.kycdetails?.cus_photo;
 
       // Make a GET request to retrieve the image
-      const userImageResponse = await axios.get(
-        `/user/imageServe/${fileName}`,
-        {
-          responseType: "arraybuffer", // Tell axios to treat the response as binary data
-        }
-      );
-
-      // Convert the received byte array (bytecode) to a URL
-      const src2 = URL.createObjectURL(new Blob([userImageResponse.data]));
-      localStorage.setItem("imageSrc", src2);
-
-      // Get the user's role from the response
+      if (fileName) {
+        const userImageResponse = await axios.get(
+          `/user/imageServe/${fileName}`,
+          {
+            responseType: "arraybuffer", // Tell axios to treat the response as binary data
+          }
+        );
+      
+        // Convert the received byte array (bytecode) to a URL
+        const src2 = URL.createObjectURL(new Blob([userImageResponse.data]));
+        localStorage.setItem("imageSrc", src2); // Remove this line's closing curly brace
+        //dispatch({ type: "UPDATE_IMAGE_DETAILS", payload: src2 });
+   
+      
+       
+      }
+      
+     
       const userRole = userResponse.data.role;
 
       // Store the token and role in local storage for future use

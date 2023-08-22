@@ -1,11 +1,16 @@
 
 
 const initialState = {
-  // Other state properties...
+  isAuthenticated: false,
+  user: null,
+  userDetails: {},
   masteruser: {
-    // Other masteruser properties...
     transactions: [],
+    kycdetails: {
+      imageSrc: null,
+    },
   },
+  beneficiary: {}
 };
 
 const userReducer = (state = initialState, action) => {
@@ -31,8 +36,23 @@ const userReducer = (state = initialState, action) => {
         },
       };
 
+      // case 'UPDATE_IMAGE_DETAILS':
+      //   return {
+      //     ...state,
+      //     masteruser: {
+      //       ...state.masteruser,
+      //       kycdetails: {
+      //         ...state.masteruser.kycdetails,
+      //         imageSrc:action.payload,
+      //       },
+      //     },
+      //   };
+  
+
     case 'LOGOUT_USER':
-      return null; // Reset user state to null when logging out
+      return {
+        ...initialState, // Reset to initial state on logout
+      };
     default:
       return state;
    

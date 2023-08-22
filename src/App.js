@@ -13,6 +13,8 @@ import Accounts from "./admin/Accounts";
 import { Provider } from "react-redux";
 import store from "./store";
 import TransactionPage from "./transaction/transaction";
+import ServicesPage from "./static/ServicesPage";
+import ContactPage from "./static/ContactPage";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -34,6 +36,8 @@ function App() {
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/signup" element={<RegistrationForm />} />
               <Route
                 path="/signin"

@@ -19,6 +19,13 @@ export const updateBeneficiaryDetails = (beneficiaryDetails) => {
     };
   };
 
+  // export const updateImage = (imageSrc) => {
+  //   return {
+  //     type: 'UPDATE_IMAGE_DETAILS',
+  //     payload: imageSrc,
+  //   };
+  // };
+
   
 
   export const logoutUser = () => {

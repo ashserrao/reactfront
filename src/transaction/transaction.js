@@ -9,7 +9,9 @@ import axios from "axios";
 import { updatedMasteruserDetails } from "../userActions";
 
 const TransactionPage = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [isDepositPopupOpen, setIsDepositPopupOpen] = useState(false);
+
+  const [isWithdrawPopupOpen, setIsWithdrawPopupOpen] = useState(false);
 
   const [transferData, setTransferData] = useState({
     amount: "",
@@ -18,11 +20,15 @@ const TransactionPage = () => {
   const dispatch = useDispatch();
   const userData1 = useSelector((state) => state.user);
 
-  const handleTransferClick = () => {
-    setIsPopupOpen(true);
+  const handleDepositClick = () => {
+    setIsDepositPopupOpen(true);
   };
 
+  const handleWithdrawClick = () => {
+    setIsWithdrawPopupOpen(true);
+  };
   const token = localStorage.getItem("token");
+ 
   const handlePopupSubmit = async (e) => {
     e.preventDefault();
 
@@ -55,7 +61,43 @@ const TransactionPage = () => {
 
     console.log(transferData);
 
-    setIsPopupOpen(false);
+    setIsDepositPopupOpen(false);
+  };
+
+  const handleWithdrawSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `user/updateDebitTransaction/${userData1?.masteruser?.user_id}`,
+        {
+          debitAmount: parseFloat(transferData.amount),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      setTransferData({
+        amount: "",
+      });
+
+      console.log(response.data);
+      const updatedMasteruser = response.data;
+
+      dispatch(updatedMasteruserDetails(updatedMasteruser));
+      //dispatch(updateTransactionDetails(transactionDetails));
+    } catch (error) {
+      console.error(error);
+    }
+
+    console.log(transferData);
+
+    
+    setIsWithdrawPopupOpen(false);
   };
 
   return (
@@ -83,23 +125,29 @@ const TransactionPage = () => {
           </h2>
           <div className="actions-container">
             <button className="action-button">Transfer Amount</button>
-            <button className="action-button" onClick={handleTransferClick}>
+            <button className="action-button" onClick={handleDepositClick}>
               Deposit Amount
             </button>
-            <button className="action-button">Withdraw Amount</button>
+            <button className="action-button" onClick={handleWithdrawClick}>
+              Withdraw Amount
+            </button>
           </div>
         </div>
       </div>
-      {isPopupOpen && (
+      {isDepositPopupOpen || isWithdrawPopupOpen ? (
         <div className="popup">
           <div className="popup-content">
             <span
               className="close-button"
-              onClick={() => setIsPopupOpen(false)}
+              onClick={() => {
+                setIsDepositPopupOpen(false);
+                setIsWithdrawPopupOpen(false);
+              }}
             >
               &times;
             </span>
-            <h2>Deposit</h2>
+
+            {isDepositPopupOpen ? <h2>Deposit</h2> : <h2>Withdraw</h2>}
             <form>
               <div>
                 <label>
@@ -119,14 +167,21 @@ const TransactionPage = () => {
               <br />
               <br />
               <div>
-                <button type="button" onClick={handlePopupSubmit}>
+                <button
+                  type="button"
+                  onClick={
+                    isWithdrawPopupOpen
+                      ? handleWithdrawSubmit
+                      : handlePopupSubmit
+                  }
+                >
                   Confirm
                 </button>
               </div>
             </form>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

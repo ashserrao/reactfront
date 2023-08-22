@@ -14,7 +14,9 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const imageSrc = localStorage.getItem("imageSrc");
+  //const imageSrc = useSelector(state => state.user?.masteruser?.kycdetails?.imageSrc);
 
+  //const [imageSrc1, setImageSrc1] = useState(imageSrc);
   const userData1 = useSelector((state) => state.user);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -72,7 +74,10 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 
       // Convert the received byte array (bytecode) to a URL
       const src3 = URL.createObjectURL(new Blob([userResponse.data]));
+      //dispatch({ type: "UPDATE_IMAGE_DETAILS", payload: src3 });
       localStorage.setItem("imageSrc", src3);
+      // setImageSrc1(src3);
+      // localStorage.setItem("imageSrc", src3);
 
       setIsPopupOpen(false);
     } catch (error) {
@@ -94,12 +99,20 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
         {isLoggedIn && (
           <button className="btn-danger btn">
             <div style={{ cursor: "pointer" }}>
-              <img
-                // src="https://www.vhv.rs/dpng/d/144-1443023_transparent-people-png-icon-people-women-icon-png.png"
-                src={imageSrc}
-                alt="Dropdown"
-                height="50px"
-              />
+              {imageSrc ? (
+                <img
+                  // src={imageSrc1}
+                  src={imageSrc}
+                  alt="Dropdown"
+                  height="50px"
+                />
+              ) : (
+                <img
+                  src="https://www.vhv.rs/dpng/d/144-1443023_transparent-people-png-icon-people-women-icon-png.png"
+                  alt="Dropdown"
+                  height="50px"
+                />
+              )}
             </div>
             <>
               <div className="dropdown">

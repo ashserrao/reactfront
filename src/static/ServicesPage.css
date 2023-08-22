@@ -1,0 +1,128 @@
+/* .services-page {
+    padding: 20px;
+  }
+  
+  .service-section {
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .card-services,
+  .mobile-services,
+  .loan-services,
+  .online-banking {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  .card img {
+     width: 160px;
+    height: 100px; 
+    margin-bottom: 10px;
+  }
+  
+  h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Add media queries as needed for responsive design 
+  
+  @media (max-width: 768px) {
+    .card-services,
+    .mobile-services,
+    .loan-services,
+    .online-banking {
+      justify-content: center;
+    }
+  }
+   */
+
+   .services-page {
+    padding: 20px;
+  }
+  
+  .service-section {
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .card-services,
+  .mobile-services,
+  .loan-services,
+  .online-banking {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    flex: calc(50% - 10px); /* Divide into two columns with gap between cards */
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  .card img {
+    width: 200px;
+   height: 130px; 
+   margin-bottom: 10px;
+ }
+  
+  h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Add media queries as needed for responsive design */
+  
+  @media (max-width: 768px) {
+    .card-services,
+    .mobile-services,
+    .loan-services,
+    .online-banking {
+      justify-content: center;
+    }
+  }
+  

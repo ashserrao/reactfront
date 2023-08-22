@@ -96,6 +96,7 @@
 
 /* Style for the close button */
 .close-button {
+  background-color: darkred;
   position: absolute;
   top: 10px;
   right: 10px;
